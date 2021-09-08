@@ -10,26 +10,10 @@ function clearFields() {
   $("show-errors").empty();
 }
 
-// function lastWeek(results) {
-//   results.bikes.forEach((bike) => {
-//     if (bike.date_stolen < Date.now() - 604800000 || bike.date_stolen === null) {
-//       results.bikes.splice(bike, 1); 
-//       console.log(bike.date_stolen);
-//     }
-//   });
-//   return results;
-// }
-
 function lastWeek(results) {
-  // let date = Date.now();
-  let bikeArray = results.bikes;
-  console.log(bikeArray);
-  // // bikeArray.forEach((bike, i) => {
-  // //   if (bike.date_stolen < (date - 604800000) / 1000) {
-  // //     // bikeArray.splice(i, 1); 
-  // //   }
-  // });
-  return bikeArray;
+  let date = (Date.now() - 604800000) / 1000;
+  let lastWeekBikes = results.bikes.filter(bike => bike.date_stolen > date);
+  return lastWeekBikes;
 }
 
 $(document).ready(function () {
